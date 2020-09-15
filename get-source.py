@@ -3,6 +3,15 @@ from pprint import pprint
 from functools import reduce
 import re
 
+# TODO:
+# - Determine languages and get group stats
+# - Ignore (optionally) files e.g. config and environment setup
+# - Get line counts
+# - Prevent making useless requests for resources e.g. images and other binaries
+# - Try iterative approach for get_download_urls instead of recursive
+# - Tail call?
+# - Toss this entire strategy? All these requests...
+
 # Traverse file tree recursively and get all raw file download urls
 def get_download_urls(url):
     contents = request("GET", url)
@@ -51,7 +60,7 @@ def analysis(download_urls):
     return info
 
 # <input type="text" placeholder="user/repo" /> 
-repo = "vxxce/learning-docker"
+repo = "vxxce/arttix_scheduling"
 api_base = "https://api.github.com/repos/"
 source_url = api_base + repo + "/contents"
 
